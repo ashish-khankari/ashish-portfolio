@@ -8,18 +8,25 @@
   <meta name="description" content="Ashish Khankari — React Native, React and Node.js developer portfolio.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <div class="noise"></div>
+
   <header class="topbar">
     <button class="menu-toggle" id="menuToggle" onclick="toggleDrawer()">☰</button>
-    <a class="brand" href="#" data-page="home" onclick="show('home'); return false"><span class="logo">AK</span><span>Ashish Khankari</span></a>
-    <div class="top-status"><span></span> Open to React Native / Full-Stack opportunities</div>
+
+    <a class="brand" href="#" data-page="home" onclick="show('home'); return false">
+      <span class="logo">AK</span>
+      <span>Ashish Khankari</span>
+    </a>
+
+    <div class="top-status">
+      <span></span> Open to React Native / Full-Stack opportunities
+    </div>
+
     <div class="top-actions">
       <a href="#" class="ghost" data-page="work" onclick="show('work'); return false">Work</a>
       <a href="#contact" class="primary" onclick="show('contact'); return false">Let's talk <b>↗</b></a>
@@ -28,8 +35,13 @@
 
   <main class="app-shell">
     <aside class="explorer">
-      <div class="explorer-head"><span>EXPLORER</span><span class="dots">•••</span></div>
+      <div class="explorer-head">
+        <span>EXPLORER</span>
+        <span class="dots">•••</span>
+      </div>
+
       <div class="tree" id="tree"></div>
+
       <div class="explorer-bottom">
         <div><span class="green-dot"></span> Available for work</div>
         <div class="mini-stack">React Native · React · Node.js</div>
@@ -46,6 +58,7 @@
     <span>© 2026 Ashish Khankari</span>
     <span>Built for people who care about the product.</span>
   </footer>
+
   <script src="script.js"></script>
 </body>
 
