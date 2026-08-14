@@ -32,7 +32,7 @@ const projects = {
 
 let current = "home", openFolders = new Set(["work"]);
 
-function icon(type) { return type === "folder" ? "▰" : type === "tsx" ? "◈" : type === "md" ? "▤" : "◇" }
+function icon(type) { return type === "folder" ? "🗂️" : type === "tsx" ? "📄" : type === "md" ? "📝" : type === "ts" ? "📘" : "🗄️" }
 function renderTree() {
   const root = document.getElementById("tree");
   root.innerHTML = "";
@@ -40,7 +40,7 @@ function renderTree() {
     const wrap = document.createElement("div"); wrap.className = "folder " + (openFolders.has(node.name) ? "open" : "");
     if (node.type === "folder") {
       const row = document.createElement("div"); row.className = "row";
-      row.innerHTML = `<span class="chev">▶</span><span class="folder">▰</span><span>${node.name}</span>`;
+      row.innerHTML = `<span class="chev">▶</span><span class="folder">${icon("folder")}</span><span>${node.name}</span>`;
       row.onclick = () => { openFolders.has(node.name) ? openFolders.delete(node.name) : openFolders.add(node.name); renderTree() };
       wrap.appendChild(row);
       const children = document.createElement("div"); children.className = "children " + (openFolders.has(node.name) ? "" : "hidden");
@@ -118,6 +118,7 @@ function project(key) {
 
 function about() {
   return `<div class="about-grid"><div><div class="crumb">about / profile.md</div><h2>More than<br>just screens.</h2></div><div><p>I work across mobile, web and backend layers. My main focus is React Native, but I also build React interfaces and Node.js APIs when the product needs an end-to-end solution.</p><p>I care about clear UX, maintainable code and understanding why a feature exists before deciding how to build it.</p><div class="facts"><div class="fact"><b>3+</b><span>Years experience</span></div><div class="fact"><b>RN</b><span>Primary specialty</span></div><div class="fact"><b>FS</b><span>Full-stack capable</span></div><div class="fact"><b>OSS</b><span>Open-source work</span></div></div></div></div>`;
+  
 }
 
 function skillsPage() {
@@ -129,7 +130,7 @@ function experience() {
 }
 
 function contact() {
-  return `<div class="contact-page"><div class="crumb">contact / contact.md</div><h1>Let's build<br>something <span>useful.</span></h1><p>I'm open to React Native, React and full-stack opportunities. For a project, role or collaboration, send me a message.</p><div class="contact-links"><a class="contact-link" href="mailto:your-email@example.com">Email ↗</a><a class="contact-link" href="#" target="_blank">LinkedIn ↗</a><a class="contact-link" href="#" target="_blank">GitHub ↗</a><a class="contact-link" href="#" target="_blank">Resume ↗</a></div></div>`;
+  return `<div class="contact-page"><div class="crumb">contact / contact.md</div><h1>Let's build<br>something <span>great.</span></h1><p>I'm open to React Native, React and full-stack opportunities. For a project, role or collaboration, send me a message.</p><div class="contact-links"><a class="contact-link" href="mailto:ashishkhankari0922@gmail.com" target="_blank"><span class="contact-icon">📧</span> Email</a><a class="contact-link" href="https://www.linkedin.com/in/ashish-khankari/" target="_blank"><span class="contact-icon">💼</span> LinkedIn</a><a class="contact-link" href="https://github.com/ashish-khankari" target="_blank"><span class="contact-icon">🐙</span> GitHub</a><a class="contact-link" href="https://medium.com/@ashishkhankari" target="_blank"><span class="contact-icon">✍️</span> Medium</a><a class="contact-link" href="https://drive.google.com/file/d/1kgT4qRUm5Geet_E2qHkl8pKu8bg4tv5w/view?usp=sharing" target="_blank"><span class="contact-icon">📄</span> Resume</a></div></div>`;
 }
 
 function pageContent(page) {
@@ -139,7 +140,20 @@ function pageContent(page) {
 function label(page) {
   if (page === "home") return "README.md"; if (page === "work") return "projects.tsx"; if (projects[page]) return projects[page].file; if (page === "skills") return "stack.ts"; if (page === "about") return "profile.md"; if (page === "experience") return "experience.ts"; return "contact.md";
 }
+// Mobile drawer toggle
+function toggleDrawer() {
+  const explorer = document.querySelector(".explorer");
+  explorer.classList.toggle("open");
+}
+
+function closeDrawer() {
+  const explorer = document.querySelector(".explorer");
+  explorer.classList.remove("open");
+}
+
+// Close drawer when navigating
 function show(page) {
+  closeDrawer();
   current = page;
   document.getElementById("content").innerHTML = pageContent(page);
 
@@ -278,6 +292,9 @@ function showEasterEgg() {
 
 // Keyboard shortcuts
 document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeDrawer();
+  }
   if (e.ctrlKey && e.key === "k") {
     e.preventDefault();
     createCommandPalette();
@@ -296,6 +313,14 @@ document.addEventListener("keydown", (e) => {
     if (document.activeElement.tagName !== "INPUT") {
       show("contact");
     }
+  }
+});
+
+// Close drawer on overlay click
+document.addEventListener("click", (e) => {
+  const explorer = document.querySelector(".explorer");
+  if (explorer.classList.contains("open") && !explorer.contains(e.target) && !document.querySelector(".menu-toggle").contains(e.target)) {
+    closeDrawer();
   }
 });
 
