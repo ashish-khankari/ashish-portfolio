@@ -251,8 +251,15 @@ function project(key) {
       </div>
 
       <aside class="side">
-        <div><small>PRIMARY STACK</small><b>${primaryStack}</b></div>
-        ${technologies.map(x => `<div><small>TECHNOLOGY</small><b>${x}</b></div>`).join("")}
+        <div>
+          <small>PRIMARY STACK</small>
+          <b>${primaryStack}</b>
+        </div>
+
+        <div>
+          <small>TECHNOLOGY</small>
+          <b>${technologies.join(" · ")}</b>
+        </div>
       </aside>
     </div>
 
