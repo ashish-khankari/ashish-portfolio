@@ -27,7 +27,7 @@ const projects = {
     result: "Built and deployed a complete productivity product from idea through implementation and Play Store release, while keeping the experience intentionally focused rather than feature-heavy.",
     stack: ["React Native", "Firebase", "Kotlin", "Native Modules", "GitHub", "Expo", "ChatGPT"],
     primaryStack: "React Native · Firebase · Kotlin",
-    technology: ["Native Modules", "GitHub", "Expo", "ChatGPT"],
+    technology: ["Native Modules", "GitHub", "Expo", "ChatGPT", "Play Store", "Firebase Auth", "Firebase Firestore", "Firebase Storage"],
     visual: "phone",
     images: ["images/commit/image1.webp", "images/commit/image2.webp", "images/commit/image3.webp"]
   },
@@ -41,8 +41,8 @@ const projects = {
     challenges: "Managing a complex product lifecycle while handling heavy animations, third-party OAuth integrations and automation flows. Used Linear for project planning and delivery, and AI development tools such as Claude and Cursor to reduce implementation time and improve development efficiency.",
     result: "Delivered an end-to-end mobile product with a broad third-party integration layer, customer automation workflows and production deployments across both major mobile platforms.",
     stack: ["React Native", "Firebase", "Kotlin", "Swift", "WebView", "Native Modules", "Expo", "Composio", "OAuth"],
-    primaryStack: "React Native · Firebase · Kotlin · Swift · WebView",
-    technology: ["Native Modules", "GitHub", "Expo", "Composio", "OAuth", "Claude", "Cursor", "Linear"],
+    primaryStack: "React Native · Firebase · Kotlin · Swift",
+    technology: ["Native Modules", "GitHub", "Expo", "Composio", "OAuth", "Claude", "Cursor", "Linear", "OAuth Integrations", "Reanimated", "Gesture Handler", "Google Sign-In", "Apple Sign-In"],
     visual: "phone",
     images: ["images/centralai/image1.webp", "images/centralai/image2.webp", "images/centralai/image3.webp"]
   },
@@ -55,7 +55,7 @@ const projects = {
     engineering: "Product-focused interface for digital contracts, escrow payment flows, project milestones, approvals, disputes and real-time status updates.",
     challenges: "Designing a trustworthy experience around payments and agreements while keeping important transaction states easy to understand.",
     result: "A product experience focused on reducing trust gaps between service providers and customers through clearer contracts, protected payments and transparent project progress.",
-    stack: ["React", "JavaScript", "Responsive UI"],
+    stack: ["React", "JavaScript", "Tanstack Query", "Native Modules", "GitHub", "Expo", "Responsive UI"],
     visual: "phone",
     images: ["images/tradesafe/image1.webp", "images/tradesafe/image2.webp", "images/tradesafe/image3.webp"]
   },
@@ -68,7 +68,7 @@ const projects = {
     engineering: "Product experience spanning pet profiles, community interactions, search and follow flows, pet wellness content and a marketplace for pet care products.",
     challenges: "Balancing social features with pet-care discovery so the product feels like a community rather than simply a marketplace or content feed.",
     result: "A multi-purpose pet platform that brings social sharing, community discovery and pet wellness into a single product experience.",
-    stack: ["React", "JavaScript", "Responsive UI"],
+    stack: ["React","Redux Toolkit","Typescript", "React Navigation","Firebase","Expo", "Gesture Handler","Reanimated"],
     visual: "phone",
     images: ["images/xpets/image1.webp", "images/xpets/image2.webp", "images/xpets/image3.webp"]
   },
