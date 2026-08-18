@@ -29,7 +29,10 @@ const projects = {
     primaryStack: "React Native · Firebase · Kotlin",
     technology: ["Native Modules", "GitHub", "Expo", "ChatGPT", "Play Store", "Firebase Auth", "Firebase Firestore", "Firebase Storage"],
     visual: "phone",
-    images: ["images/commit/image1.webp", "images/commit/image2.webp", "images/commit/image3.webp"]
+    images: ["images/commit/image1.webp", "images/commit/image2.webp", "images/commit/image3.webp"],
+    storeLinks: {
+      playStore: "https://play.google.com/store/apps/details?id=com.app.commit&pcampaignid=web_share",
+    }
   },
   centralai: {
     file: "central-ai.tsx",
@@ -40,11 +43,15 @@ const projects = {
     engineering: "Owned the product end to end, from application development through deployment to the Play Store and App Store. Built automation flows for customers and integrated 50+ third-party apps through Composio and OAuth, including Gmail, Slack, Notion and Jira. Implemented interactive flow experiences in React Native using Reanimated and Gesture Handler.",
     challenges: "Managing a complex product lifecycle while handling heavy animations, third-party OAuth integrations and automation flows. Used Linear for project planning and delivery, and AI development tools such as Claude and Cursor to reduce implementation time and improve development efficiency.",
     result: "Delivered an end-to-end mobile product with a broad third-party integration layer, customer automation workflows and production deployments across both major mobile platforms.",
-    stack: ["React Native", "Firebase", "Kotlin", "Swift", "WebView", "Native Modules", "Expo", "Composio", "OAuth"],
+    stack: ["React Native", "Firebase", "Kotlin", "Swift", "Native Modules", "Expo", "Composio", "OAuth"],
     primaryStack: "React Native · Firebase · Kotlin · Swift",
-    technology: ["Native Modules", "GitHub", "Expo", "Composio", "OAuth", "Claude", "Cursor", "Linear", "OAuth Integrations", "Reanimated", "Gesture Handler", "Google Sign-In", "Apple Sign-In"],
+    technology: ["Native Modules", "GitHub", "Expo", "Context API", "Composio", "OAuth", "Claude", "Cursor", "Linear", "OAuth Integrations", "Reanimated", "Gesture Handler", "Google Sign-In", "Apple Sign-In"],
     visual: "phone",
-    images: ["images/centralai/image1.webp", "images/centralai/image2.webp", "images/centralai/image3.webp"]
+    images: ["images/centralai/image1.webp", "images/centralai/image2.webp", "images/centralai/image3.webp"],
+    storeLinks: {
+      playStore: "https://play.google.com/store/apps/details?id=com.centralai&pcampaignid=web_share",
+      appStore: "https://apps.apple.com/in/app/central-ai-assistant/id6756373580"
+    }
   },
   tradesafetransfers: {
     file: "trade-safe.tsx",
@@ -57,7 +64,11 @@ const projects = {
     result: "A product experience focused on reducing trust gaps between service providers and customers through clearer contracts, protected payments and transparent project progress.",
     stack: ["React", "JavaScript", "Tanstack Query", "Native Modules", "GitHub", "Expo", "Responsive UI"],
     visual: "phone",
-    images: ["images/tradesafe/image1.webp", "images/tradesafe/image2.webp", "images/tradesafe/image3.webp"]
+    images: ["images/tradesafe/image1.webp", "images/tradesafe/image2.webp", "images/tradesafe/image3.webp"],
+    storeLinks: {
+      playStore: "https://play.google.com/store/apps/details?id=com.tradesafemobile&pcampaignid=web_share",
+      appStore: "https://apps.apple.com/in/app/trade-safe-transfers/id6745817204"
+    }
   },
   xpets: {
     file: "xpets.tsx",
@@ -68,9 +79,13 @@ const projects = {
     engineering: "Product experience spanning pet profiles, community interactions, search and follow flows, pet wellness content and a marketplace for pet care products.",
     challenges: "Balancing social features with pet-care discovery so the product feels like a community rather than simply a marketplace or content feed.",
     result: "A multi-purpose pet platform that brings social sharing, community discovery and pet wellness into a single product experience.",
-    stack: ["React","Redux Toolkit","Typescript", "React Navigation","Firebase","Expo", "Gesture Handler","Reanimated"],
+    stack: ["React", "Redux Toolkit", "Typescript", "React Navigation", "Firebase", "Expo", "Gesture Handler", "Reanimated"],
     visual: "phone",
-    images: ["images/xpets/image1.webp", "images/xpets/image2.webp", "images/xpets/image3.webp"]
+    images: ["images/xpets/image1.webp", "images/xpets/image2.webp", "images/xpets/image3.webp"],
+    storeLinks: {
+      playStore: "https://play.google.com/store/apps/details?id=com.xpets.app&pcampaignid=web_share",
+      appStore: "https://apps.apple.com/in/app/xpets/id6502528559"
+    }
   },
   thriveai: {
     file: "thrive.tsx",
@@ -81,9 +96,13 @@ const projects = {
     engineering: "Designed around personalized daily reflections, emotion-aware check-ins, journaling, gentle goal-setting and progress tracking, with privacy positioned as a core product principle.",
     challenges: "Creating a supportive experience without turning personal growth into a rigid productivity system, while keeping reflection and personal data feeling private and trustworthy.",
     result: "A calm, personalized wellness experience centered on small consistent steps, emotional reflection and private self-care.",
-    stack: ["React", "JavaScript", "Responsive UI"],
+    stack: ["React", "Websocket", "Redux Toolkit", "Typescript", "React Navigation", "Firebase", "Expo", "Gesture Handler", "Reanimated"],
     visual: "phone",
-    images: ["images/thriveai/image1.webp", "images/thriveai/image2.webp", "images/thriveai/image3.webp"]
+    images: ["images/thriveai/image1.webp", "images/thriveai/image2.webp", "images/thriveai/image3.webp"],
+    storeLinks: {
+      playStore: "https://play.google.com/store/apps/details?id=com.thriveai.app&pcampaignid=web_share",
+      appStore: "https://apps.apple.com/us/app/thrive-ai-health/id6736629477"
+    }
   }
 };
 
@@ -260,6 +279,62 @@ function project(key) {
           <small>TECHNOLOGY</small>
           <b>${technologies.join(" · ")}</b>
         </div>
+
+        ${p.storeLinks ? `
+          <div class="store-links">
+            <small>AVAILABLE ON</small>
+
+            <div class="store-buttons">
+
+              ${p.storeLinks.playStore ? `
+                <a
+                  href="${p.storeLinks.playStore}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="store-button"
+                  onclick="event.stopPropagation()"
+                >
+                  <img
+                    src="images/storeicon/playstore.png"
+                    alt="Google Play"
+                    class="store-icon"
+                  >
+
+                  <span>
+                    <small>GET IT ON</small>
+                    <strong>Google Play</strong>
+                  </span>
+
+                  <span class="store-arrow">↗</span>
+                </a>
+              ` : ""}
+
+              ${p.storeLinks.appStore ? `
+                <a
+                  href="${p.storeLinks.appStore}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="store-button"
+                  onclick="event.stopPropagation()"
+                >
+                  <img
+                    src="images/storeicon/appstore.png"
+                    alt="App Store"
+                    class="store-icon"
+                  >
+
+                  <span>
+                    <small>DOWNLOAD ON THE</small>
+                    <strong>App Store</strong>
+                  </span>
+
+                  <span class="store-arrow">↗</span>
+                </a>
+              ` : ""}
+
+            </div>
+          </div>
+        ` : ""}
       </aside>
     </div>
 
