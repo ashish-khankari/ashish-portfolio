@@ -1,6 +1,7 @@
 const treeData = [
   {
     name: "work", type: "folder", children: [
+      { name: "api-flow.tsx", type: "tsx", page: "apiflow" },
       { name: "central-ai.tsx", type: "tsx", page: "centralai" },
       { name: "trade-safe.tsx", type: "tsx", page: "tradesafetransfers" },
       { name: "commit.tsx", type: "tsx", page: "commit" },
@@ -16,6 +17,25 @@ const treeData = [
 ];
 
 const projects = {
+  apiflow: {
+    file: "api-flow.tsx",
+    title: "APIFlow — Distributed Workflow Engine",
+    kicker: "Node.js • BullMQ • Redis • MySQL",
+    intro: "A distributed workflow automation engine that executes chained HTTP API requests asynchronously with dynamic token rotation.",
+    desc: "APIFlow enables users to design, chain, and monitor multi-step API sequences. It decouples execution from the HTTP lifecycle using a Redis-backed BullMQ worker architecture, ensuring non-blocking performance and resilience against external API failures.",
+    engineering: "Architected a decoupled 3-tier system: Express REST API, Upstash Redis with BullMQ worker processes, and Aiven MySQL for relational audit logging. Built dynamic token extraction across chained requests, exponential backoff retries (3 attempts), and 15s request timeouts.",
+    challenges: "Preventing Node's single-threaded event loop from hanging during long chains of external HTTP requests. Solved by immediately returning HTTP 202 Accepted with a unique runId, delegating execution to background workers, and recording per-step latency and status codes for real-time polling.",
+    result: "Engineered a production-ready distributed workflow engine deployed across Render (backend) and Vercel (frontend) with end-to-end TLS/SSL encryption for cloud database and broker connections.",
+    stack: ["Node.js", "TypeScript", "Express", "BullMQ", "Redis", "MySQL", "Next.js", "Render"],
+    primaryStack: "Node.js • TypeScript • BullMQ • Redis",
+    technology: ["BullMQ", "ioredis", "MySQL2", "Zod", "JWT", "Axios", "Render", "Vercel", "Aiven Cloud", "Upstash"],
+    visual: "flow",
+    storeLinks: {
+      live: "https://apiflow-app.vercel.app/",
+      github: "https://github.com/ashish-khankari/APIFlow-backend"
+    }
+  },
+
   commit: {
     file: "commit.tsx",
     title: "Commit - Focus Timer",
@@ -159,7 +179,16 @@ function visual(type) {
     return `<div class="phone"><div class="phone-screen"><div class="phone-line short"></div><div class="ring"></div><div class="phone-line"></div><div class="phone-line short"></div></div></div>`;
   }
   if (type === "flow") {
-    return `<div class="flow"><div class="flow-row"><b>POST</b>/auth/login <span>200</span></div><div class="flow-row"><b>GET</b>/users/:id <span>200</span></div><div class="flow-row"><b>POST</b>/orders <span>201</span></div></div>`;
+    return `<div class="browser" style="width: 88%; max-width: 580px; background: #0a0d0b; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8); cursor: pointer;" onclick="openImageModal('images/apiflow/image1.png')">
+      <div class="browser-bar" style="height: 26px; background: #141915; display: flex; align-items: center; padding: 0 12px; gap: 6px; border-bottom: 1px solid var(--line);">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #ff5f56; display: inline-block;"></span>
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #ffbd2e; display: inline-block;"></span>
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #27c93f; display: inline-block;"></span>
+        <span style="margin-left: 12px; font-size: 11px; color: var(--muted); font-family: monospace;">apiflow-app.vercel.app</span>
+        <span style="margin-left: auto; font-size: 10px; color: var(--lime); background: rgba(200,241,105,0.12); padding: 2px 8px; border-radius: 4px;">Live Flow</span>
+      </div>
+      <img src="images/apiflow/image1.png" alt="API Flow Workflow Canvas" style="width: 100%; height: auto; display: block; object-fit: cover;">
+    </div>`;
   }
   if (type === "meal") {
     return `<div class="browser"><div class="browser-bar"></div><div class="meal"><small>FRESH · DAILY</small><strong>Home-style meals,<br>delivered.</strong></div></div>`;
@@ -171,8 +200,8 @@ function home() {
   return `<div class="hero">
     <div>
       <div class="crumb">README.md <b>·</b> portfolio</div>
-      <h1>Hi, I'm <em>Ashish.</em><br>React Native<br>Developer.</h1>
-      <p>I build mobile and web products with React Native, React, Node.js and backend technologies — from the interface users touch to the APIs behind it.</p>
+      <h1>Hi, I'm <em>Ashish.</em><br>Full-Stack &amp;<br>Mobile Engineer.</h1>
+      <p>I build distributed backend systems and high-performance cross-platform applications with Node.js, Express, BullMQ, Redis, MySQL, Next.js, and React Native.</p>
       <div class="hero-buttons">
         <a class="btn lime" href="#" onclick="show('work');return false">View selected work ↗</a>
         <a class="btn outline" href="#contact" onclick="show('contact');return false">Contact me</a>
@@ -184,8 +213,8 @@ function home() {
       <p>Clean interfaces, practical architecture and an emphasis on shipping useful software.</p>
       <div class="quick-list">
         <div><span>Experience</span><b>3+ years</b></div>
-        <div><span>Primary</span><b>React Native</b></div>
-        <div><span>Also</span><b>React · Node.js</b></div>
+        <div><span>Focus</span><b>Full-Stack</b></div>
+        <div><span>Specialty</span><b>Node.js • React Native</b></div>
         <div><span>Based</span><b>India</b></div>
       </div>
     </div>
@@ -285,6 +314,40 @@ function project(key) {
             <small>AVAILABLE ON</small>
 
             <div class="store-buttons">
+              ${p.storeLinks.live ? `
+                <a
+                  href="${p.storeLinks.live}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="store-button"
+                  onclick="event.stopPropagation()"
+                >
+                  <span class="store-icon">🌐</span>
+                  <span>
+                    <small>VIEW DEMO</small>
+                    <strong>Live Project</strong>
+                  </span>
+                  <span class="store-arrow">↗</span>
+                </a>
+              ` : ""}
+
+              ${p.storeLinks.github ? `
+                <a
+                  href="${p.storeLinks.github}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="store-button"
+                  onclick="event.stopPropagation()"
+                >
+                  <span class="store-icon">💻</span>
+                  <span>
+                    <small>SOURCE CODE</small>
+                    <strong>GitHub</strong>
+                  </span>
+                  <span class="store-arrow">↗</span>
+                </a>
+              ` : ""}
+
 
               ${p.storeLinks.playStore ? `
                 <a
@@ -361,8 +424,8 @@ function about() {
           </h1>
 
           <p class="about-lead">
-            I build products across the mobile, frontend and backend layers —
-            with React Native as my primary focus.
+            I build distributed backend systems and high-performance mobile applications —
+            combining resilient Node.js architectures with seamless user experiences.
           </p>
         </div>
 
@@ -927,6 +990,7 @@ function createCommandPalette() {
 
   const files = [
     { label: "projects.tsx", page: "work" },
+    { label: "api-flow.tsx", page: "apiflow" },
     { label: "central-ai.tsx", page: "centralai" },
     { label: "trade-safe.tsx", page: "tradesafetransfers" },
     { label: "xpets.tsx", page: "xpets" },
